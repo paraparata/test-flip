@@ -1,0 +1,86 @@
+@import "./shared/button.scss";
+@import "./shared/card.scss";
+@import "./shared/dropdown.scss";
+@import "./shared/layout.scss";
+@import "./shared/text-field.scss";
+@import "./shared/toolbar.scss";
+
+// -- Base Tags -- //
+h1 {
+  margin-top: 0;
+  font-size: 62px;
+  font-weight: 300;
+}
+h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+b {
+  color: $color-orange;
+}
+
+span,
+p,
+a {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+}
+
+// -- Colors -- //
+.texy-primary {
+  color: $color-green;
+}
+.text-secondary {
+  color: $color-orange;
+}
+.text-accent {
+  color: $color-cloud;
+}
+.text-white {
+  color: #fff;
+}
+.text-black {
+  color: $color-black;
+}
+.text-gray {
+  color: $color-gray;
+}
+
+.bg-primary {
+  background: $color-green;
+}
+.bg-secondary {
+  background: $color-orange;
+}
+.bg-accent {
+  background: $color-cloud;
+}
+.bg-white {
+  background: #fff;
+}
+.bg-black {
+  background: $color-black;
+}
+.bg-gray {
+  background: $color-gray;
+}
+.border-primary {
+  border-color: $color-green;
+}
+.border-secondary {
+  border-color: $color-orange;
+}
+.border-accent {
+  border-color: $color-cloud;
+}
+.border-white {
+  border-color: #fff;
+}
+.border-black {
+  border-color: $color-black;
+}
+.border-gray {
+  border-color: $color-gray;
+}

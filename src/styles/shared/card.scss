@@ -1,0 +1,73 @@
+$strip-width: 8px;
+
+.card {
+  width: 100%;
+  padding: 1.25rem 1.25rem 1.25rem calc(1.25rem + #{$strip-width});
+  display: flex;
+  position: relative;
+  border: none;
+  border-radius: $border-radius;
+  outline: none;
+  text-align: left;
+
+  @mixin two-div($nth-number, $align-items: center) {
+    align-items: $align-items;
+    & > div:nth-of-type(#{$nth-number}) {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+
+      & > span:nth-of-type(1) {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &::before {
+    content: " ";
+    width: $strip-width;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: var(--strip-color);
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &-nopopup {
+    @include two-div(1, center);
+  }
+
+  &-popup {
+    @include two-div(1, center);
+    cursor: pointer;
+
+    &:hover {
+      left: -1px;
+      top: -3px;
+    }
+
+    &:focus {
+      left: 2px;
+      top: 2px;
+    }
+  }
+
+  &-summary {
+    @include two-div(2, start);
+
+    & > div:nth-of-type(1) {
+      padding-right: calc(1.25rem + #{$strip-width});
+    }
+
+    &-section {
+      padding-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+
+      & > span:nth-of-type(1) {
+        font-weight: 700;
+      }
+    }
+  }
+}

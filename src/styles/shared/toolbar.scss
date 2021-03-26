@@ -1,0 +1,12 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  border-width: $border-width;
+  border-style: $border-style;
+  border-radius: $border-radius;
+
+  &-left {
+    border-left-width: $border-width;
+    border-left-style: $border-style;
+  }
+}

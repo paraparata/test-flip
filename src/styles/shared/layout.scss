@@ -1,0 +1,25 @@
+.layout {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $container-width) {
+    padding: 1rem;
+  }
+}
+
+.container {
+  width: $container-width;
+  padding: 1rem;
+
+  > .wrapper {
+    padding: 0 0 1rem 0;
+  }
+}
+
+.content {
+  padding: 1rem 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

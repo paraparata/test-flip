@@ -1,0 +1,9 @@
+@import "./styles/variabels.scss";
+@import "./styles/styles.scss";
+
+@import url($font-url);
+
+.App {
+  min-height: 100vh;
+  font-family: $font-family;
+}

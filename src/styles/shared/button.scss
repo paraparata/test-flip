@@ -1,0 +1,26 @@
+.box {
+  padding: 8px 14px;
+  position: relative;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-family: $font-family;
+  font-weight: 600;
+
+  &-btn {
+    cursor: pointer;
+
+    &:hover {
+      background: lighten($color-orange, 32%);
+    }
+  }
+
+  &-outline {
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  &-spadding {
+    padding: 1rem;
+  }
+}
