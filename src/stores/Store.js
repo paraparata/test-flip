@@ -6,6 +6,7 @@ import React, { createContext, useReducer } from "react";
 import Reducer, { ACTIONS } from "./Reducer";
 
 const initialState = {
+  originData: [],
   transactionsData: [],
   total: 0,
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context, ACTIONS } from "../stores/Store";
 import { currency as cr } from "../utils/currency";
 import { sorting } from "../utils/sorting";
@@ -8,7 +8,11 @@ import Header from "../components/Header";
 import ToolBar from "../components/ToolBar";
 
 function TransactionList() {
+  const [searchText, setSearchText] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const { state, dispatch } = useContext(Context);
+  const dataList =
+    searchText.length === 0 ? state.transactionsData : searchResult;
   const toolBarOptions = {
     ascend: {
       name: "Nama A-Z",
@@ -18,7 +22,7 @@ function TransactionList() {
           payload: {
             ...state,
             transactionsData: sorting(
-              state.transactionsData,
+              dataList,
               "beneficiary_name",
               "asc-string"
             ),
@@ -33,7 +37,7 @@ function TransactionList() {
           payload: {
             ...state,
             transactionsData: sorting(
-              state.transactionsData,
+              dataList,
               "beneficiary_name",
               "des-string"
             ),
@@ -47,11 +51,7 @@ function TransactionList() {
           type: ACTIONS.STORE_DATA,
           payload: {
             ...state,
-            transactionsData: sorting(
-              state.transactionsData,
-              "created_at",
-              "asc-date"
-            ),
+            transactionsData: sorting(dataList, "created_at", "asc-date"),
           },
         }),
     },
@@ -62,15 +62,32 @@ function TransactionList() {
           type: ACTIONS.STORE_DATA,
           payload: {
             ...state,
-            transactionsData: sorting(
-              state.transactionsData,
-              "created_at",
-              "des-date"
-            ),
+            transactionsData: sorting(dataList, "created_at", "des-date"),
           },
         }),
     },
   };
+
+  const handleOnSearch = (e) => {
+    setSearchText(e.current.value);
+  };
+
+  useEffect(() => {
+    if (searchText.length !== 0) {
+      const result = state.transactionsData.filter((item) =>
+        item.beneficiary_name.toLowerCase().includes(searchText)
+      );
+      setSearchResult(result);
+    } else {
+      dispatch({
+        type: ACTIONS.STORE_DATA,
+        payload: {
+          ...state,
+          transactionsData: state.originData,
+        },
+      });
+    }
+  }, [searchText]);
 
   return (
     <div className="layout">
@@ -87,10 +104,13 @@ function TransactionList() {
           </p>
         </div>
         <div className="wrapper">
-          <ToolBar options={toolBarOptions} />
+          <ToolBar
+            options={toolBarOptions}
+            handleOnSearch={(e) => handleOnSearch(e)}
+          />
         </div>
         <main className="wrapper content">
-          <CardListTransaction data={state.transactionsData} />
+          <CardListTransaction data={dataList} />
         </main>
       </div>
     </div>

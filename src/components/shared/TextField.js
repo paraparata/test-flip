@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 
 function TextField({
   prefix,
   placeholder = "Placeholder",
   onChange = () => {},
 }) {
+  const textRef = useRef();
+
+  const handleOnChange = () => {
+    onChange(textRef);
+  };
+
   return (
     <div className="text-field">
       {prefix}
-      <input placeholder={placeholder} onChange={onChange} />
+      <input
+        ref={textRef}
+        placeholder={placeholder}
+        onChange={handleOnChange}
+      />
     </div>
   );
 }

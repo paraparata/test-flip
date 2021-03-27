@@ -27,7 +27,7 @@ function App() {
           const total = data.map((item) => item.amount).reduce((a, c) => a + c);
           dispatch({
             type: ACTIONS.STORE_DATA,
-            payload: { transactionsData: data, total },
+            payload: { originData: data, transactionsData: data, total },
           });
         })
         .catch((e) => console.log(e))

@@ -1,18 +1,16 @@
 import React from "react";
 
 import Dropdown from "./shared/Dropdown";
-import TextField from "./shared/TextField";
-import Icon from "./shared/Icon";
+import Search from "./Search";
 
-import icons from "../assets/iconList";
-
-const SearchIcon = <Icon icon={icons.search} color="#b4b4b4" size="22" />;
-
-function ToolBar({ options }) {
+function ToolBar({ options, handleOnSearch }) {
   return (
     <div className="toolbar bg-white border-gray">
       <div>
-        <TextField placeholder="Cari nama atau bank" prefix={SearchIcon} />
+        <Search
+          placeholder="Cari nama atau bank"
+          onChange={(e) => handleOnSearch(e)}
+        />
       </div>
       <div className="toolbar-left border-gray">
         <Dropdown dropdownOption={options} />
