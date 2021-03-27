@@ -8,33 +8,14 @@ import icons from "../assets/iconList";
 
 const SearchIcon = <Icon icon={icons.search} color="#b4b4b4" size="22" />;
 
-function ToolBar() {
-  const dropdownOption = {
-    ascend: {
-      name: "Nama A-Z",
-      handler: () => {},
-    },
-    descend: {
-      name: "Nama Z-A",
-      handler: () => {},
-    },
-    newer: {
-      name: "Tanggal terbaru",
-      handler: () => {},
-    },
-    older: {
-      name: "Tanggal terlama",
-      handler: () => {},
-    },
-  };
-
+function ToolBar({ options }) {
   return (
     <div className="toolbar bg-white border-gray">
       <div>
         <TextField placeholder="Cari nama atau bank" prefix={SearchIcon} />
       </div>
       <div className="toolbar-left border-gray">
-        <Dropdown dropdownOption={dropdownOption} />
+        <Dropdown dropdownOption={options} />
       </div>
     </div>
   );
