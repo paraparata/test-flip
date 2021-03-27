@@ -6,6 +6,9 @@ import { date as dt } from "../utils/date";
 import Icon from "./shared/Icon";
 import icons from "../assets/iconList";
 
+// Detect device width
+const mobileView = window.screen.width < 600;
+
 function CardSummary({ data }) {
   const detailData = {
     sender: {
@@ -40,7 +43,11 @@ function CardSummary({ data }) {
       style={{ "--strip-color": "none", width: "auto" }}
     >
       <div>
-        <Icon icon={icons.inboxFill} color="#fd6542" size="58" />
+        <Icon
+          icon={icons.inboxFill}
+          color="#fd6542"
+          size={mobileView ? "36" : "58"}
+        />
       </div>
       <div>
         {Object.entries(detailData).map(([key, val]) => {

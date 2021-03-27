@@ -13,6 +13,8 @@ function TransactionList() {
   const { state, dispatch } = useContext(Context);
   const dataList =
     searchText.length === 0 ? state.transactionsData : searchResult;
+
+  // ToolBar dropdown options
   const toolBarOptions = {
     ascend: {
       name: "Nama A-Z",
@@ -73,6 +75,10 @@ function TransactionList() {
   };
 
   useEffect(() => {
+    /* If searchText does have value,
+     then change data source (dataList variable) to searchResult array.
+     If not, change data source to origin array.
+    */ 
     if (searchText.length !== 0) {
       const result = state.transactionsData.filter((item) =>
         item.beneficiary_name.toLowerCase().includes(searchText)

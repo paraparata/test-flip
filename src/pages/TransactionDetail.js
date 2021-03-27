@@ -31,6 +31,7 @@ function TransactionDetail({ match }) {
             status="SUCCESS"
             strip={false}
             hoverable={false}
+            single={true}
           />
         </div>
         <div className="wrapper">

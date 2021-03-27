@@ -2,6 +2,7 @@
 @import "./shared/card.scss";
 @import "./shared/dropdown.scss";
 @import "./shared/layout.scss";
+@import "./shared/loader.scss";
 @import "./shared/text-field.scss";
 @import "./shared/toolbar.scss";
 
@@ -10,11 +11,19 @@ h1 {
   margin-top: 0;
   font-size: 62px;
   font-weight: 300;
+
+  @media (max-width: $container-width) {
+    font-size: 42px;
+  }
 }
 h2 {
   margin: 0;
   font-size: 28px;
   font-weight: 600;
+
+  @media (max-width: $container-width) {
+    font-size: 24px;
+  }
 }
 
 b {
@@ -26,6 +35,10 @@ p,
 a {
   margin: 0 0 4px 0;
   font-size: 20px;
+
+  @media (max-width: $container-width) {
+    font-size: 16px;
+  }
 }
 
 // -- Colors -- //

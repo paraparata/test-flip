@@ -12,4 +12,8 @@
     outline: none;
     font-size: inherit;
   }
+
+  @media (max-width: $container-width) {
+    gap: 0;
+  }
 }

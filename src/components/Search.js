@@ -5,7 +5,13 @@ import Icon from "./shared/Icon";
 
 import icons from "../assets/iconList";
 
-const SearchIcon = <Icon icon={icons.search} color="#b4b4b4" size="22" />;
+// Detect device width
+const mobileView = window.screen.width < 600;
+
+// Search icon component
+const SearchIcon = (
+  <Icon icon={icons.search} color="#b4b4b4" size={mobileView ? "16" : "22"} />
+);
 
 function Search({ placeholder, onChange }) {
   const handleSearch = (e) => {

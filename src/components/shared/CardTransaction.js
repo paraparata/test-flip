@@ -19,6 +19,7 @@ function CardTransaction({
   status,
   strip = true,
   hoverable = true,
+  single = false,
   onClick = () => {},
 }) {
   const labelStyle = status === "SUCCESS" ? "default" : "outline";
@@ -34,7 +35,7 @@ function CardTransaction({
       onClick={onClick}
     >
       <div>
-        {title && <span>{title}</span>}
+        {title && <span style={{ margin: single ? "0" : null }}>{title}</span>}
         {subtitle && <span>{subtitle}</span>}
         {detail && <span>{detail}</span>}
       </div>

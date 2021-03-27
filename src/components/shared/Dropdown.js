@@ -5,14 +5,17 @@ import Icon from "./Icon";
 
 import icons from "../../assets/iconList";
 
+// Detect device width
+const mobileView = window.screen.width < 600;
+
 function Dropdown({ dropdownOption }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownListVisibility = {
     "--dropdown-list-visibility": isOpen ? "visible" : "hidden",
   };
 
+  // Click wherever to close dropdown list
   useEffect(() => {
-    // Click wherever to close dropdown list
     const handleOpenState = () => setIsOpen(false);
     if (isOpen) {
       document.addEventListener("click", handleOpenState);
@@ -43,7 +46,11 @@ function Dropdown({ dropdownOption }) {
           }}
         >
           <span style={{ margin: 0, fontSize: "16px" }}>URUTKAN</span>
-          <Icon icon={icons.arrowDownShort} color="#fd6542" size="22" />
+          <Icon
+            icon={icons.arrowDownShort}
+            color="#fd6542"
+            size={mobileView ? "16" : "22"}
+          />
         </div>
       </Button>
       <div className="dropdown-list bg-white" style={dropdownListVisibility}>
@@ -62,6 +69,7 @@ function Dropdown({ dropdownOption }) {
                       display: "flex",
                       fontSize: "16px",
                       fontWeight: "400",
+                      textAlign: "start",
                     }}
                   >
                     {val.name}

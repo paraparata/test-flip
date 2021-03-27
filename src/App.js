@@ -13,6 +13,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const { dispatch } = useContext(Context);
 
+  // Fetch data from API and assign it to React Context
   const _getData = useCallback(
     (url) => {
       fetch(url)
@@ -43,7 +44,11 @@ function App() {
   }, [_getData]);
 
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <div className="App bg-accent loader">
+        <h2>Loading...</h2>
+      </div>
+    );
   } else {
     return (
       <div className="App bg-accent">
